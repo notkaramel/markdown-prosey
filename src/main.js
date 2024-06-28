@@ -10,19 +10,7 @@ inputText.addEventListener("input", async () => {
   outputText.innerHTML = await marked(inputText.value);
 });
 
-document.addEventListener("DOMContentLoaded", async (event) => {
+document.addEventListener("DOMContentLoaded", async () => {
   inputText.value = localStorage.getItem("input") || "";
   outputText.innerHTML = await marked(inputText.value);
 });
-
-
-const tx = document.getElementsByTagName("textarea");
-for (let i = 0; i < tx.length; i++) {
-  tx[i].setAttribute("style", "height:" + (tx[i].scrollHeight) + "px;overflow-y:hidden;");
-  tx[i].addEventListener("input", OnInput, false);
-}
-
-function OnInput() {
-  this.style.height = 'auto';
-  this.style.height = (this.scrollHeight) + "px";
-}

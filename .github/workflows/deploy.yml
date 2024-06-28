@@ -33,7 +33,7 @@ jobs:
         uses: oven-sh/setup-bun@v1
       - name: Install dependencies
         run: bun i
-      - name: Build Webpage & Documentation
+      - name: Build Webpage
         run: bun run build
       - name: Setup Pages
         uses: actions/configure-pages@v4

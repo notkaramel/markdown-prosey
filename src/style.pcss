@@ -3,7 +3,7 @@ button {
 }
 
 #utils {
-    @apply flex items-center justify-center border-b border-t mt-4;
+    @apply flex flex-row items-center justify-center border-b border-t mt-4;
 }
 
 .island {
@@ -11,11 +11,18 @@ button {
 }
 
 #input {
-    @apply w-full px-4 py-2 bg-white rounded-b-lg text-sm text-gray-800 border-0 focus:ring-0;
-    @apply resize-y;
+    @apply w-full px-4 py-2 bg-white rounded-b-lg text-base text-gray-800 border-0 focus:ring-0;
+    @apply resize-y h-full;
 }
 
 #output {
-    @apply block prose-sm;
+    @apply prose prose-base *:my-2;
+    @apply prose-li:my-0 prose-ul:my-0;
+    @apply prose-h1:border-b-2 prose-h1:pb-3;
+    @apply prose-hr:my-4;
+    /* @apply dark:prose-invert; */
 }
 
+button {
+    @apply flex flex-row gap-2 items-center;
+}

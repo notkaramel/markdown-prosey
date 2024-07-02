@@ -35,13 +35,15 @@ downloadMarkdownButton.addEventListener("click", () => {
 })
 
 function extractMarkdown() {
-  return new Blob([JSON.stringify(inputText.value)], {
-    type: "application/text",
+  console.log(inputText.value)
+  return new Blob([inputText.value], {
+    type: "text/markdown",
   });
 }
 
 function createPDF() {
-  let pdf = new Blob([JSON.stringify(outputText.innerHTML)], {
+  console.log(outputText.value)
+  let pdf = new Blob([JSON.stringify(outputText.value)], {
     type: "application/pdf",
   });
   console.log(pdf);
@@ -50,11 +52,11 @@ function createPDF() {
 
 function downloadFile(blob, fileName) {
   const aElement = document.createElement('a');
-  aElement.setAttribute('download', fileName);
   const href = URL.createObjectURL(blob);
+
+  aElement.download = fileName;
   aElement.href = href;
-  // aElement.setAttribute('href', href);
-  aElement.setAttribute('target', '_blank');
+  aElement.target = "_blank";
   aElement.click();
   URL.revokeObjectURL(href);
 };

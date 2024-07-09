@@ -18,11 +18,18 @@ button {
 #output {
     @apply prose prose-base *:my-2;
     @apply prose-li:my-0 prose-ul:my-0;
-    @apply prose-h1:border-b-2 prose-h1:pb-3;
     @apply prose-hr:my-4;
+    /* Text styling */
+    @apply prose-h1:border-b-2 prose-h1:pb-3 prose-h1:font-bold; 
+    @apply prose-a:text-blue-600;
     /* @apply dark:prose-invert; */
 }
 
 button {
     @apply flex flex-row gap-2 items-center;
+
+    .button-svg {
+        @apply w-4 h-4;
+        @apply fill-current;
+    }
 }

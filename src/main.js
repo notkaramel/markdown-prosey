@@ -16,17 +16,14 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 // const uploadImageButton = document.getElementById("upload-image-button");
-
 // uploadImageButton.addEventListener("click", () => {
-
 // });
 
-const downloadPDFButton = document.getElementById("download-pdf-button");
-
-downloadPDFButton.addEventListener("click", () => {
-  let pdf = createPDF();
-  downloadFile(pdf, "example.pdf")
-});
+// const downloadPDFButton = document.getElementById("download-pdf-button");
+// downloadPDFButton.addEventListener("click", () => {
+//   let pdf = createPDF();
+//   downloadFile(pdf, "example.pdf")
+// });
 
 const downloadMarkdownButton = document.getElementById("download-md-button");
 
@@ -68,3 +65,18 @@ exampleMarkdown.addEventListener("click", async () => {
   inputText.value = await fetch("/example.md").then((response) => response.text());
   outputText.innerHTML = marked(inputText.value);
 });
+
+const copyToClipboard = document.getElementById("clipboard-button");
+const copyToClipboardMsg = document.getElementById("clipboard-message");
+copyToClipboard.addEventListener("click", async () => {
+  const type = "text/plain";
+  const text = extractMarkdown();
+  const blob = new Blob([text], { type });
+  const data = [new ClipboardItem({ [type]: blob })]; 2
+  await navigator.clipboard.write(data);
+
+  copyToClipboardMsg.hidden = false;
+  setTimeout(() => {
+    copyToClipboardMsg.hidden = true;
+  }, 1000);
+})

@@ -6,8 +6,6 @@
 **bold text**
 
 ## Heading 2
-
-
 *italicized text*
 
 Things are working
@@ -36,8 +34,6 @@ Things are working
 ```
 
 ~~The world is flat.~~
-
-I need to highlight these ==very important words==.
 
 H~2~O and X^2^
 

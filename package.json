@@ -16,6 +16,6 @@
     "vite": "^5.3.1"
   },
   "dependencies": {
-    "marked": "^13.0.1"
+    "marked": "^14.1.1"
   }
 }

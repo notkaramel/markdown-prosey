@@ -80,3 +80,10 @@ copyToClipboard.addEventListener("click", async () => {
     copyToClipboardMsg.hidden = true;
   }, 1000);
 })
+
+
+const viewOnGitHub = document.getElementById('view-on-github-button');
+viewOnGitHub.addEventListener("click", () => {
+  window.open("https://github.com/notkaramel/prosey-editor");
+})
+

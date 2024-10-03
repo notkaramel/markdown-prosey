@@ -62,7 +62,8 @@ const exampleMarkdown = document.getElementById("example-markdown-button");
 
 exampleMarkdown.addEventListener("click", async () => {
   // Getting the example markdown file from `public` folder
-  inputText.value = await fetch("/example.md").then((response) => response.text());
+  // Hardcoded path for the build, fix later :)
+  inputText.value = await fetch("/prosey-editor/example.md").then((response) => response.text());
   outputText.innerHTML = marked(inputText.value);
 });
 

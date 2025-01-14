@@ -1,5 +1,4 @@
 import './index.css'
-import './style.pcss'
 import { marked } from "marked";
 
 const inputText = document.getElementById("input");
@@ -14,6 +13,13 @@ document.addEventListener("DOMContentLoaded", async () => {
   inputText.value = localStorage.getItem("input") || "";
   outputText.innerHTML = await marked(inputText.value);
 });
+
+const folderButton = document.getElementById('folder-button');
+const folderFilesView = document.getElementById('folder-files')
+let folderOpen = false;
+folderButton.addEventListener("click", () => {
+  folderFilesView.toggleAttribute('hidden');
+})
 
 // const uploadImageButton = document.getElementById("upload-image-button");
 // uploadImageButton.addEventListener("click", () => {
@@ -32,7 +38,6 @@ downloadMarkdownButton.addEventListener("click", () => {
 })
 
 function extractMarkdown() {
-  console.log(inputText.value)
   return new Blob([inputText.value], {
     type: "text/markdown",
   });
@@ -62,7 +67,7 @@ const exampleMarkdown = document.getElementById("example-markdown-button");
 
 exampleMarkdown.addEventListener("click", async () => {
   // Getting the example markdown file from `public` folder
-  // Hardcoded path for the build, fix later :)
+  // Hardcoded path for the build, fix later :)v
   inputText.value = await fetch("/prosey-editor/example.md").then((response) => response.text());
   outputText.innerHTML = marked(inputText.value);
 });

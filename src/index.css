@@ -1,3 +1,41 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+button, input[type="radio"] {
+    @apply p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600;
+}
+
+#utils, #folder-files-options {
+    @apply flex flex-row items-center justify-center border-b border-t mt-4 py-1;
+}
+
+.island {
+    @apply w-1/2 mb-4 border border-gray-600 rounded-lg bg-white p-4 shadow-md;
+}
+
+#input {
+    @apply w-full px-4 py-2 bg-white rounded-b-lg text-base text-gray-800 border-0 focus:ring-0;
+    @apply resize-y h-full;
+}
+
+#output {
+    @apply prose prose-base *:my-2;
+    /* Text styling */
+    @apply prose-li:my-0 prose-ul:my-0;
+    @apply prose-hr:my-4;
+    @apply prose-h1:border-b-2 prose-h1:pb-3 prose-h1:font-bold; 
+    @apply prose-a:text-blue-600;
+    @apply prose-code:bg-gray-100 prose-code:rounded prose-code:px-1 prose-code:py-0.5;
+    @apply prose-li:prose-p:py-1; 
+    /* @apply dark:prose-invert; */
+}
+
+button {
+    @apply flex flex-row gap-2 items-center;
+
+    .button-svg {
+        @apply w-4 h-4;
+        @apply fill-current;
+    }
+}

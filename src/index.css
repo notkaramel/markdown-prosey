@@ -20,13 +20,14 @@ button, input[type="radio"] {
 }
 
 #output {
+    @apply w-fit;
     @apply prose prose-base *:my-2;
     /* Text styling */
     @apply prose-li:my-0 prose-ul:my-0;
     @apply prose-hr:my-4;
     @apply prose-h1:border-b-2 prose-h1:pb-3 prose-h1:font-bold; 
     @apply prose-a:text-blue-600;
-    @apply prose-code:bg-gray-100 prose-code:rounded prose-code:px-1 prose-code:py-0.5;
+    @apply prose-code:rounded prose-code:px-1 prose-code:py-0.5;
     @apply prose-li:prose-p:py-1; 
     /* @apply dark:prose-invert; */
 }

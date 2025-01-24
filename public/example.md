@@ -13,9 +13,9 @@ Things are working
 > blockquote
 
 - First item
-  -  [title](https://www.example.com)
+  -  Item 1: [title](https://www.example.com)
 - Second item
-   - ![alt text](https://picsum.photos/300)
+   - Item 2: ![alt text](https://picsum.photos/300)
  - Third item
 
 ---

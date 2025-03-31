@@ -1,13 +1,25 @@
 import './index.css'
 import { marked } from "marked";
+import katex from 'katex';
 
 const inputText = document.getElementById("input");
 const outputText = document.getElementById("output");
 
 inputText.addEventListener("input", async () => {
   localStorage.setItem("input", inputText.value);
+  marked.use({ renderer: { code: (code, language) => `<pre><code class="language-${language}">${code}</code></pre>` } });
+  outputText.innerHTML += inputText.value.replace(/\$\$(.*?)\$\$/g, processMath);
   outputText.innerHTML = await marked(inputText.value);
 });
+
+function processMath(segments) {
+  const math = segments;
+  try {
+    return katex.renderToString(math, { throwOnError: false });
+  } catch (error) {
+    return `<span style="color: red;">${error.toString()}</span>`;
+  }
+}
 
 document.addEventListener("DOMContentLoaded", async () => {
   inputText.value = localStorage.getItem("input") || "";

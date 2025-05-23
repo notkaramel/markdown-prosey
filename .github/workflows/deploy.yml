@@ -34,7 +34,7 @@ jobs:
       - name: Install dependencies
         run: bun i
       - name: Build Webpage
-        run: bun run build --base="${{ github.repository }}"
+        run: bun run build --base="/${{ github.repository }}"
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload Page artifact to GitHub Pages

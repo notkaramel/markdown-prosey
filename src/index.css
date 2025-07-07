@@ -11,16 +11,16 @@ button, input[type="radio"] {
 }
 
 .island {
-    @apply w-1/2 mb-4 border border-gray-600 rounded-lg bg-white p-4 shadow-md;
+    @apply w-full max-w-[700px] min-h-fit mb-4 border border-gray-600 rounded-lg bg-white p-4 shadow-md;
 }
 
 #input {
-    @apply w-full px-4 py-2 bg-white rounded-b-lg text-base text-gray-800 border-0 focus:ring-0;
-    @apply resize-y h-full;
+    @apply w-full min-h-fit px-4 py-2 bg-white rounded-b-lg text-base text-gray-800 border-0 focus:ring-0;
+    @apply resize;
 }
 
 #output {
-    @apply w-fit;
+    @apply w-fit min-h-52;
     @apply prose prose-base *:my-2;
     /* Text styling */
     @apply prose-li:my-0 prose-ul:my-0;

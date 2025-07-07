@@ -1,6 +1,6 @@
 import './index.css'
 import { marked } from "marked";
-import katex from 'katex';
+import exampleMarkdownFile from './example.md?url';
 
 const inputText = document.getElementById("input");
 const outputText = document.getElementById("output");
@@ -8,40 +8,14 @@ const outputText = document.getElementById("output");
 inputText.addEventListener("input", async () => {
   localStorage.setItem("input", inputText.value);
   marked.use({ renderer: { code: (code, language) => `<pre><code class="language-${language}">${code}</code></pre>` } });
-  outputText.innerHTML += inputText.value.replace(/\$\$(.*?)\$\$/g, processMath);
   outputText.innerHTML = await marked(inputText.value);
 });
-
-function processMath(segments) {
-  const math = segments;
-  try {
-    return katex.renderToString(math, { throwOnError: false });
-  } catch (error) {
-    return `<span style="color: red;">${error.toString()}</span>`;
-  }
-}
 
 document.addEventListener("DOMContentLoaded", async () => {
   inputText.value = localStorage.getItem("input") || "";
   outputText.innerHTML = await marked(inputText.value);
 });
 
-const folderButton = document.getElementById('folder-button');
-const folderFilesView = document.getElementById('folder-files')
-let folderOpen = false;
-folderButton.addEventListener("click", () => {
-  folderFilesView.toggleAttribute('hidden');
-})
-
-// const uploadImageButton = document.getElementById("upload-image-button");
-// uploadImageButton.addEventListener("click", () => {
-// });
-
-// const downloadPDFButton = document.getElementById("download-pdf-button");
-// downloadPDFButton.addEventListener("click", () => {
-//   let pdf = createPDF();
-//   downloadFile(pdf, "example.pdf")
-// });
 
 const downloadMarkdownButton = document.getElementById("download-md-button");
 
@@ -55,6 +29,10 @@ function extractMarkdown() {
   });
 }
 
+/**
+ * unfinished funciton :(
+ * @returns a pdf file
+ */
 function createPDF() {
   console.log(outputText.value)
   let pdf = new Blob([JSON.stringify(outputText.value)], {
@@ -77,11 +55,9 @@ function downloadFile(blob, fileName) {
 
 const exampleMarkdown = document.getElementById("example-markdown-button");
 
+// Getting the example markdown file
 exampleMarkdown.addEventListener("click", async () => {
-  // Getting the example markdown file from `public` folder
-  // Hardcoded path for the build, fix later :)
-  const rootBase = import.meta.env.BASE_URL;
-  inputText.value = await fetch(rootBase + "/example.md").then((response) => response.text());
+  inputText.value = await fetch(exampleMarkdownFile).then((response) => response.text());
   outputText.innerHTML = marked(inputText.value);
 });
 
